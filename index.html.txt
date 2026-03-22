@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CleanDrive Sweden</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f4f4f4;
+      text-align: center;
+    }
+    header {
+      background: #007BFF;
+      color: white;
+      padding: 20px;
+    }
+    .content {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚗 CleanDrive Sweden</h1>
+  <p>Mobile Car Wash Service</p>
+</header>
+
+<div class="content">
+  <h2>About Us</h2>
+  <p>
+    Vi erbjuder pålitlig och professionell mobil biltvätt.  
+    We offer reliable and professional mobile car wash services.  
+    We come to your location, wash your car carefully, and return it clean and shining.
+  </p>
+</div>
+
+<div class="content">
+  <h2>Contact Us</h2>
+
+  <form action=" https://formspree.io/f/abc123" method="POST">
+    
+    <input type="text" name="name" placeholder="Your Name" required><br>
+
+    <input type="email" name="email" placeholder="Your Email" required><br>
+
+    <textarea name="message" placeholder="Your Message" required></textarea><br>
+
+    <button type="submit">Send Message</button>
+
+  </form>
+</div>
+
+</body>
+</html>
