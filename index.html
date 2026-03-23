@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +11,32 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
+}
+
+nav {
+  background: #007BFF;
+  padding: 15px;
+  position: sticky;
+  top: 0;
   text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 header {
   background: #0056b3;
   color: white;
-  padding: 40px;
+  text-align: center;
+  padding: 40px 20px;
 }
 
 .section {
@@ -25,9 +44,10 @@ header {
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
+  text-align: center;
 }
 
-input {
+input, textarea {
   width: 80%;
   padding: 10px;
   margin: 10px;
@@ -45,7 +65,6 @@ button:hover {
   background: #0056b3;
 }
 
-/* WhatsApp */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -55,18 +74,15 @@ button:hover {
   padding: 15px;
   border-radius: 50px;
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* Call button */
-.call {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: #007BFF;
+footer {
+  background: #0056b3;
   color: white;
+  text-align: center;
   padding: 15px;
-  border-radius: 50px;
-  text-decoration: none;
+  margin-top: 20px;
 }
 </style>
 
@@ -74,30 +90,74 @@ button:hover {
 
 <body>
 
+<nav>
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#booking">Booking</a>
+</nav>
+
 <header>
   <h1>🚗 CleanDrive Sweden</h1>
-  <p>Professionell mobil biltvätt</p>
+  <p>Professional Mobile Car Wash</p>
 </header>
 
-<div class="section">
-  <h2>📅 Boka nu</h2>
+<div id="about" class="section">
+  <h2>About Us</h2>
+  <p>
+    We provide professional mobile car wash services in Sweden.  
+    Fast, reliable and high quality service at your location.
+  </p>
+</div>
 
-  <form id="bookingForm">
-    <input type="text" id="name" placeholder="Ditt namn" required><br>
-    <input type="datetime-local" id="time" required><br>
-    <button type="submit">Boka nu</button>
+<div id="contact" class="section">
+  <h2>Contact Us</h2>
+
+  <form action="https://formspree.io/f/YOUR_ID" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="email" name="email" placeholder="Your Email" required><br>
+    <textarea name="message" placeholder="Your Message" required></textarea><br>
+    <button type="submit">Send</button>
   </form>
 </div>
 
-<!-- WhatsApp button -->
+<div id="booking" class="section">
+  <h2>📅 Book Now</h2>
+
+  <form action="https://formspree.io/f/YOUR_ID" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="email" name="email" placeholder="Your Email" required><br>
+    <input type="datetime-local" name="time" required><br>
+    <textarea name="message" placeholder="Address / Details" required></textarea><br>
+    <button type="submit">Book Now</button>
+  </form>
+</div>
+
+<div class="section">
+  <h2>📍 Our Location</h2>
+  <iframe 
+    src="https://www.google.com/maps?q=Halmstad,Sweden&output=embed"
+    width="90%" height="300" style="border:0;">
+  </iframe>
+</div>
+
+<div class="section">
+  <h2>Our Work</h2>
+
+  <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d"
+       style="width:80%; border-radius:10px; margin-bottom:20px;">
+
+  <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc"
+       style="width:80%; border-radius:10px;">
+</div>
+
 <a href="https://wa.me/46739290743" class="whatsapp" target="_blank">
   💬 WhatsApp
 </a>
 
-<!-- Call button -->
-<a href="tel:+46739290743" class="call">
-  📞 Call Now
-</a>
+<footer>
+  <p>© 2026 CleanDrive Sweden</p>
+</footer>
 
 </body>
 </html>
