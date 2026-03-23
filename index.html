@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +11,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
-}
-
-nav {
-  background: #007BFF;
-  padding: 15px;
-  position: sticky;
-  top: 0;
   text-align: center;
-}
-
-nav a {
-  color: white;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 header {
   background: #0056b3;
   color: white;
-  text-align: center;
-  padding: 40px 20px;
+  padding: 40px;
 }
 
 .section {
@@ -40,10 +25,9 @@ header {
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
 }
 
-input, textarea {
+input {
   width: 80%;
   padding: 10px;
   margin: 10px;
@@ -61,6 +45,7 @@ button:hover {
   background: #0056b3;
 }
 
+/* WhatsApp */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -70,15 +55,18 @@ button:hover {
   padding: 15px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: bold;
 }
 
-footer {
-  background: #0056b3;
+/* Call button */
+.call {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #007BFF;
   color: white;
-  text-align: center;
   padding: 15px;
-  margin-top: 20px;
+  border-radius: 50px;
+  text-decoration: none;
 }
 </style>
 
@@ -86,59 +74,30 @@ footer {
 
 <body>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#booking">Booking</a>
-</nav>
-
 <header>
   <h1>🚗 CleanDrive Sweden</h1>
-  <p>Mobile Car Wash</p>
+  <p>Professionell mobil biltvätt</p>
 </header>
 
-<div id="booking" class="section">
-  <h2>📅 Book Now</h2>
+<div class="section">
+  <h2>📅 Boka nu</h2>
 
   <form id="bookingForm">
-    <input type="text" id="name" placeholder="Your Name" required><br>
+    <input type="text" id="name" placeholder="Ditt namn" required><br>
     <input type="datetime-local" id="time" required><br>
-    <button type="submit">Book Now</button>
+    <button type="submit">Boka nu</button>
   </form>
 </div>
 
-<footer>
-  <p>© 2026 CleanDrive Sweden</p>
-</footer>
+<!-- WhatsApp button -->
+<a href="https://wa.me/46739290743" class="whatsapp" target="_blank">
+  💬 WhatsApp
+</a>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT",
-};
-
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-// booking save
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  let name = document.getElementById("name").value;
-  let time = document.getElementById("time").value;
-
-  db.collection("bookings").add({
-    name: name,
-    time: time
-  }).then(() => {
-    alert("Booking Saved!");
-  });
-});
-</script>
+<!-- Call button -->
+<a href="tel:+46739290743" class="call">
+  📞 Call Now
+</a>
 
 </body>
 </html>
