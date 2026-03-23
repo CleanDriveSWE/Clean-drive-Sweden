@@ -99,16 +99,13 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   e.preventDefault();
 
   let name = document.getElementById("name").value;
+  let time = document.getElementById("time").value;
 
-  // ✅ time fix
-  let time = new Date(document.getElementById("time").value).toISOString();
-
-  // 🔍 check if time exists
   const q = query(collection(db, "bookings"), where("time", "==", time));
   const snapshot = await getDocs(q);
 
   if (!snapshot.empty) {
-    alert("❌ Detta datum och tid är redan bokad!");
+    alert("❌ Denna tid är redan bokad!");
   } else {
     await addDoc(collection(db, "bookings"), {
       name: name,
