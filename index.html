@@ -86,9 +86,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -99,13 +99,16 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   e.preventDefault();
 
   let name = document.getElementById("name").value;
-  let time = document.getElementById("time").value;
 
+  // ✅ time fix
+  let time = new Date(document.getElementById("time").value).toISOString();
+
+  // 🔍 check if time exists
   const q = query(collection(db, "bookings"), where("time", "==", time));
   const snapshot = await getDocs(q);
 
   if (!snapshot.empty) {
-    alert("❌ Denna tid är redan bokad!");
+    alert("❌ Detta datum och tid är redan bokad!");
   } else {
     await addDoc(collection(db, "bookings"), {
       name: name,
