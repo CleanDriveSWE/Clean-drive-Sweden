@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,32 +11,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
-}
-
-nav {
-  background: #007BFF;
-  padding: 15px;
-  position: sticky;
-  top: 0;
   text-align: center;
-}
-
-nav a {
-  color: white;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
 }
 
 header {
   background: #0056b3;
   color: white;
-  text-align: center;
-  padding: 40px 20px;
+  padding: 40px;
 }
 
 .section {
@@ -44,10 +25,9 @@ header {
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
 }
 
-input, textarea {
+input {
   width: 80%;
   padding: 10px;
   margin: 10px;
@@ -65,7 +45,6 @@ button:hover {
   background: #0056b3;
 }
 
-/* WHATSAPP BUTTON */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -75,29 +54,6 @@ button:hover {
   padding: 15px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: bold;
-}
-
-/* CALL BUTTON */
-.call {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: #007BFF;
-  color: white;
-  padding: 15px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* FOOTER */
-footer {
-  background: #0056b3;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 20px;
 }
 </style>
 
@@ -105,80 +61,61 @@ footer {
 
 <body>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#booking">Booking</a>
-</nav>
-
 <header>
   <h1>🚗 CleanDrive Sweden</h1>
-  <p>Professional Mobile Car Wash</p>
+  <p>Professionell mobil biltvätt</p>
 </header>
 
-<div id="about" class="section">
-  <h2>About Us</h2>
-  <p>
-    We provide professional mobile car wash services in Sweden.  
-    Fast, reliable and high quality service at your location.
-  </p>
-</div>
+<div class="section">
+  <h2>📅 Boka nu</h2>
 
-<div id="contact" class="section">
-  <h2>Contact Us</h2>
-
-  <form action="https://formspree.io/f/YOUR_ID" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required><br>
-    <input type="email" name="email" placeholder="Your Email" required><br>
-    <textarea name="message" placeholder="Your Message" required></textarea><br>
-    <button type="submit">Send</button>
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Ditt namn" required><br>
+    <input type="datetime-local" id="time" required><br>
+    <button type="submit">Boka nu</button>
   </form>
 </div>
 
-<div id="booking" class="section">
-  <h2>📅 Book Now</h2>
-
-  <form action="https://formspree.io/f/YOUR_ID" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required><br>
-    <input type="email" name="email" placeholder="Your Email" required><br>
-    <input type="datetime-local" name="time" required><br>
-    <textarea name="message" placeholder="Address / Details" required></textarea><br>
-    <button type="submit">Book Now</button>
-  </form>
-</div>
-
-<div class="section">
-  <h2>📍 Our Location</h2>
-  <iframe 
-    src="https://www.google.com/maps?q=Halmstad,Sweden&output=embed"
-    width="90%" height="300" style="border:0;">
-  </iframe>
-</div>
-
-<div class="section">
-  <h2>Our Work</h2>
-
-  <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d"
-       style="width:80%; border-radius:10px; margin-bottom:20px;">
-
-  <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc"
-       style="width:80%; border-radius:10px;">
-</div>
-
-<!-- CALL BUTTON -->
-<a href="tel:+46739290743" class="call">
-  📞 Call Now
-</a>
-
-<!-- WHATSAPP BUTTON -->
 <a href="https://wa.me/46739290743" class="whatsapp" target="_blank">
   💬 WhatsApp
 </a>
 
-<footer>
-  <p>© 2026 CleanDrive Sweden</p>
-</footer>
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "PASTE_YOUR_API_KEY",
+  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
+  projectId: "PASTE_YOUR_PROJECT_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// booking system
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let time = document.getElementById("time").value;
+
+  const q = query(collection(db, "bookings"), where("time", "==", time));
+  const snapshot = await getDocs(q);
+
+  if (!snapshot.empty) {
+    alert("❌ Denna tid är redan bokad!");
+  } else {
+    await addDoc(collection(db, "bookings"), {
+      name: name,
+      time: time
+    });
+
+    alert("✅ Bokning lyckades!");
+  }
+});
+</script>
 
 </body>
 </html>
