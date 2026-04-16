@@ -6,151 +6,102 @@
 <title>CleanDrive Sweden - Mobil Bilvård</title>
 <style>
 body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; overflow-x: hidden; }
-
 nav { background: #007BFF; padding: 15px; position: sticky; top: 0; z-index: 1000; text-align: center; }
 nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
-
-header {
-  background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%);
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-}
-.logo-container {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 3px solid white;
-  border-radius: 50px 5px 50px 5px;
-  background: rgba(255, 255, 255, 0.1);
-}
-.logo-text { font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
-.logo-clean { color: #ffffff; }
-.logo-drive { color: #FFD700; }
-
-.about-section {
-  background: white;
-  margin: 20px;
-  padding: 30px 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
+header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: white; text-align: center; padding: 40px 20px; }
+.logo-container { display: inline-block; padding: 10px 20px; border: 3px solid white; border-radius: 50px 5px 50px 5px; background: rgba(255, 255, 255, 0.1); }
+.logo-text { font-size: 32px; font-weight: 900; text-transform: uppercase; }
+.about-section { background: white; margin: 20px; padding: 30px 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .about-item { font-size: 24px; font-weight: bold; color: #333; margin: 10px 0; display: block; }
 
 /* 3D Rotating Slider */
-.scene {
-  width: 300px;
-  height: 400px;
-  margin: 20px auto;
-  perspective: 1000px;
-}
-.card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-.card.is-flipped {
-  transform: rotateY(180deg);
-}
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 15px;
-  background: white;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.scene { width: 300px; height: 400px; margin: 20px auto; perspective: 1000px; }
+.card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; }
+.card.is-flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; background: white; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center; }
 .card-face img { width: 100%; height: 260px; object-fit: cover; border-bottom: 5px solid #007BFF; }
 .card-info { padding: 20px; text-align: center; }
 .card-info h3 { margin: 0; color: #007BFF; font-size: 26px; }
 .price-tag { font-size: 30px; font-weight: 900; color: #333; margin-top: 10px; }
-
-.card-face-back {
-  transform: rotateY(180deg);
-}
+.card-face-back { transform: rotateY(180deg); }
 
 .booking-section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; }
 input, textarea { width: 85%; padding: 12px; margin: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
 button { padding: 15px 40px; background: #007BFF; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 85%; }
 
-.whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-.call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+#success-message { display: none; color: #28a745; font-weight: bold; margin-top: 20px; font-size: 18px; }
 
+.whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; }
+.call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; }
 footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 30px; }
 </style>
 </head>
-
 <body>
 
-<nav>
-  <a href="#">Hem</a>
-  <a href="#booking">Boka Nu</a>
-</nav>
+<nav><a href="#">Hem</a><a href="#booking">Boka Nu</a></nav>
 
 <header>
-  <div class="logo-container">
-    <div class="logo-text"><span class="logo-clean">Clean</span><span class="logo-drive">Drive</span></div>
-  </div>
+  <div class="logo-container"><div class="logo-text">CleanDrive</div></div>
   <p style="margin-top:10px; opacity:0.9;">Mobil Bilvård</p>
 </header>
 
 <div class="about-section">
   <span class="about-item">🧹 Noggrann Dammsugning</span>
   <span class="about-item">✨ Lyxig Doft</span>
-  <p style="color: #666; margin-top: 10px;">Vi kommer till din adress!</p>
+  <p>Vi kommer till din adress!</p>
 </div>
 
 <div class="scene">
   <div class="card" id="mainCard">
-    <div class="card-face">
-      <img src="poster.jpg.PNG" alt="Standard Bil">
-      <div class="card-info">
-        <h3>Standard Bil</h3>
-        <div class="price-tag">299 SEK</div>
-      </div>
+    <div class="card-face"><img src="poster.jpg.PNG">
+      <div class="card-info"><h3>Standard Bil</h3><div class="price-tag">299 SEK</div></div>
     </div>
-    <div class="card-face card-face-back">
-      <img src="poster.jpg.PNG" alt="Stor Bil">
-      <div class="card-info">
-        <h3>Stor Bil / SUV</h3>
-        <div class="price-tag">399 SEK</div>
-      </div>
+    <div class="card-face card-face-back"><img src="poster.jpg.PNG">
+      <div class="card-info"><h3>Stor Bil / SUV</h3><div class="price-tag">399 SEK</div></div>
     </div>
   </div>
 </div>
 
 <div id="booking" class="booking-section">
   <h2 style="color: #007BFF;">📅 Boka Tid</h2>
-  <form action="https://formspree.io/f/xeerykll" method="POST">
-    <input type="text" name="name" placeholder="Ditt Namn" required><br>
-    <input type="email" name="email" placeholder="Din E-post" required><br>
-    <input type="text" name="car" placeholder="Bilmodell" required><br>
-    <input type="text" name="time" placeholder="Välj datum och tid" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" required><br>
-    <textarea name="address" placeholder="Din adress" required></textarea><br>
-    <button type="submit">CONFIRM BOOKING</button>
+  <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
+    <input type="text" name="Name" placeholder="Ditt Namn" required>
+    <input type="tel" name="Phone" placeholder="Mobilnummer" required>
+    <input type="text" name="CarModel" placeholder="Bilmodell" required>
+    <input type="text" name="DateTime" placeholder="Datum och Tid" onfocus="(this.type='datetime-local')" required>
+    <textarea name="Address" placeholder="Din adress" required></textarea>
+    <button type="submit" id="submit-btn">CONFIRM BOOKING</button>
   </form>
+  <div id="success-message">Tack! Vi har mottagit din bokning och kontaktar dig snart.</div>
 </div>
 
 <a href="tel:+46739290743" class="call">📞 Ring</a>
 <a href="https://wa.me/46739290743" class="whatsapp" target="_blank">💬 WhatsApp</a>
 
-<footer>
-  <p>© 2026 CleanDrive Sweden</p>
-</footer>
+<footer><p>© 2026 CleanDrive Sweden</p></footer>
 
 <script>
   const card = document.getElementById('mainCard');
-  setInterval(() => {
-    card.classList.toggle('is-flipped');
-  }, 2000); // Rotating every 2 seconds
-</script>
+  setInterval(() => { card.classList.toggle('is-flipped'); }, 2000);
 
+  const form = document.getElementById('car-form');
+  const message = document.getElementById('success-message');
+
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      form.style.display = 'none';
+      message.style.display = 'block';
+    } else {
+      alert("Något gick fel, försök igen.");
+    }
+  };
+</script>
 </body>
 </html>
