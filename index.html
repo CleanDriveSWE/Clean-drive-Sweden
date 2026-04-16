@@ -19,13 +19,11 @@ header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: w
 .om-oss h2 { color: #007BFF; margin-top: 0; text-align: center; }
 .om-oss p { color: #444; line-height: 1.6; font-size: 16px; }
 
-/* Reviews Section */
 .reviews-section { background: #fff; margin: 20px; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
 .review-card { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border-bottom: 2px solid #007BFF; }
 .review-name { font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
 .stars { color: #FFD700; font-size: 18px; }
 
-/* Review Form */
 .review-form input, .review-form textarea, .review-form select { width: 90%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; }
 .review-btn { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
@@ -56,12 +54,13 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 
 <header>
   <div class="logo-container"><div class="logo-text">CleanDrive</div></div>
-  <p style="margin-top:10px; opacity:0.9;">Mobil Bilvård</p>
+  <p style="margin-top:10px; opacity:0.9;">Mobil Bilvård i Halmstad</p>
 </header>
 
 <div class="about-section">
   <span class="about-item">🧹 Noggrann Dammsugning</span>
   <span class="about-item">✨ Lyxig Doft</span>
+  <p>Vi kommer hem till dig i Halmstad med omnejd!</p>
 </div>
 
 <div class="om-oss">
@@ -69,7 +68,8 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
   <p>
     <strong>Välkommen till CleanDrive Sweden!</strong><br><br>
     Vi är specialister på mobil bilvård som kommer direkt till din adress. 
-    För att garantera bästa resultat <strong>fokuserar vi helt på bilens interiör</strong> (invändig rengöring). 
+    <strong>Vi utgår från Halmstad och utför arbete i hela staden med omnejd.</strong><br><br>
+    För att garantera bästa resultat fokuserar vi helt på bilens interiör (invändig rengöring). 
     Smidigt, enkelt och på din plats!
   </p>
 </div>
@@ -81,11 +81,6 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
       <span class="review-name">Erik Johansson</span>
       <div class="stars">★★★★★</div>
       <p>"Fantastiskt jobb! Bilen doftar som ny och allt var skinande rent."</p>
-    </div>
-    <div class="review-card">
-      <span class="review-name">Sara Lindberg</span>
-      <div class="stars">★★★★★</div>
-      <p>"Smidigt att de kom till mitt jobb. Rekommenderas varmt!"</p>
     </div>
   </div>
 
@@ -116,6 +111,7 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 
 <div id="booking" class="booking-section">
   <h2 style="color: #007BFF;">📅 Boka Tid</h2>
+  <p style="color: #d9534f; font-weight: bold;">Verksam i Halmstad med omnejd</p>
   <p style="color: #666; font-size: 14px;">(Endast invändig rengöring)</p>
   <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
     <input type="text" name="Name" placeholder="Ditt Namn" required>
@@ -123,7 +119,7 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
     <input type="tel" name="Phone" placeholder="Mobilnummer" required>
     <input type="text" name="CarModel" placeholder="Bilmodell" required>
     <input type="text" name="DateTime" placeholder="Datum och Tid" onfocus="(this.type='datetime-local')" required>
-    <textarea name="Address" placeholder="Din adress" required></textarea>
+    <textarea name="Address" placeholder="Din adress i Halmstad" required></textarea>
     <button type="submit">CONFIRM BOOKING</button>
   </form>
   <div id="success-message">Tack! Vi har mottagit din bokning.</div>
@@ -132,18 +128,16 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 <a href="tel:+46739290743" class="call">📞 Ring</a>
 <a href="https://wa.me/46739290743" class="whatsapp" target="_blank">💬 WhatsApp</a>
 
-<footer><p>© 2026 CleanDrive Sweden</p></footer>
+<footer><p>© 2026 CleanDrive Sweden - Halmstad</p></footer>
 
 <script>
   const card = document.getElementById('mainCard');
   setInterval(() => { card.classList.toggle('is-flipped'); }, 2000);
 
-  // Function to add a local review (Temporary)
   function addReview() {
     const name = document.getElementById('rev-name').value;
     const stars = document.getElementById('rev-stars').value;
     const text = document.getElementById('rev-text').value;
-
     if(name && text) {
       const container = document.getElementById('reviews-container');
       const newReview = document.createElement('div');
@@ -155,7 +149,6 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
     }
   }
 
-  // Booking Form handling
   const form = document.getElementById('car-form');
   form.onsubmit = async (e) => {
     e.preventDefault();
