@@ -179,7 +179,11 @@ footer {
     <input type="text" name="name" placeholder="Ditt Namn (Your Name)" required><br>
     <input type="email" name="email" placeholder="Din E-post (Your Email)" required><br>
     <input type="text" name="car" placeholder="Bilmodell (t.ex. Volvo V60)" required><br>
-    <input type="datetime-local" name="time" required><br>
+    
+    <input type="text" name="time" placeholder="Välj datum och tid (نېټه او وخت)" 
+           onfocus="(this.type='datetime-local')" 
+           onblur="if(!this.value)this.type='text'" required><br>
+    
     <textarea name="address" placeholder="Din adress i Halmstad / Meddelande" required></textarea><br>
     <button type="submit">Confirm Booking</button>
   </form>
