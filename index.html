@@ -11,8 +11,23 @@ nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
 header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: white; text-align: center; padding: 40px 20px; }
 .logo-container { display: inline-block; padding: 10px 20px; border: 3px solid white; border-radius: 50px 5px 50px 5px; background: rgba(255, 255, 255, 0.1); }
 .logo-text { font-size: 32px; font-weight: 900; text-transform: uppercase; }
-.about-section { background: white; margin: 20px; padding: 30px 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+.about-section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .about-item { font-size: 24px; font-weight: bold; color: #333; margin: 10px 0; display: block; }
+
+.om-oss { background: #ffffff; margin: 20px; padding: 25px; border-radius: 15px; border-left: 5px solid #FFD700; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; }
+.om-oss h2 { color: #007BFF; margin-top: 0; text-align: center; }
+.om-oss p { color: #444; line-height: 1.6; font-size: 16px; }
+
+/* Reviews Section */
+.reviews-section { background: #fff; margin: 20px; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
+.review-card { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border-bottom: 2px solid #007BFF; }
+.review-name { font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
+.stars { color: #FFD700; font-size: 18px; }
+
+/* Review Form */
+.review-form input, .review-form textarea, .review-form select { width: 90%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; }
+.review-btn { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
 .scene { width: 300px; height: 400px; margin: 20px auto; perspective: 1000px; }
 .card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; }
@@ -30,8 +45,8 @@ button { padding: 15px 40px; background: #007BFF; color: white; border: none; bo
 
 #success-message { display: none; color: #28a745; font-weight: bold; margin-top: 20px; font-size: 18px; }
 
-.whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; }
-.call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; }
+.whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 30px; }
 </style>
 </head>
@@ -47,7 +62,45 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 <div class="about-section">
   <span class="about-item">🧹 Noggrann Dammsugning</span>
   <span class="about-item">✨ Lyxig Doft</span>
-  <p>Vi kommer till din adress!</p>
+</div>
+
+<div class="om-oss">
+  <h2>Om Oss</h2>
+  <p>
+    <strong>Välkommen till CleanDrive Sweden!</strong><br><br>
+    Vi är specialister på mobil bilvård som kommer direkt till din adress. 
+    För att garantera bästa resultat <strong>fokuserar vi helt på bilens interiör</strong> (invändig rengöring). 
+    Smidigt, enkelt och på din plats!
+  </p>
+</div>
+
+<div class="reviews-section">
+  <h2 style="color: #007BFF;">Vad våra kunder säger</h2>
+  <div id="reviews-container">
+    <div class="review-card">
+      <span class="review-name">Erik Johansson</span>
+      <div class="stars">★★★★★</div>
+      <p>"Fantastiskt jobb! Bilen doftar som ny och allt var skinande rent."</p>
+    </div>
+    <div class="review-card">
+      <span class="review-name">Sara Lindberg</span>
+      <div class="stars">★★★★★</div>
+      <p>"Smidigt att de kom till mitt jobb. Rekommenderas varmt!"</p>
+    </div>
+  </div>
+
+  <hr style="margin: 20px 0; border: 0.5px solid #eee;">
+  <h3>Lämna ett omdöme</h3>
+  <form id="review-form" class="review-form">
+    <input type="text" id="rev-name" placeholder="Ditt Namn" required>
+    <select id="rev-stars">
+      <option value="★★★★★">5 Stjärnor</option>
+      <option value="★★★★">4 Stjärnor</option>
+      <option value="★★★">3 Stjärnor</option>
+    </select>
+    <textarea id="rev-text" placeholder="Ditt omdöme..." required></textarea>
+    <button type="button" class="review-btn" onclick="addReview()">Skicka</button>
+  </form>
 </div>
 
 <div class="scene">
@@ -63,6 +116,7 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 
 <div id="booking" class="booking-section">
   <h2 style="color: #007BFF;">📅 Boka Tid</h2>
+  <p style="color: #666; font-size: 14px;">(Endast invändig rengöring)</p>
   <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
     <input type="text" name="Name" placeholder="Ditt Namn" required>
     <input type="email" name="Email" placeholder="Din E-post" required>
@@ -70,9 +124,9 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
     <input type="text" name="CarModel" placeholder="Bilmodell" required>
     <input type="text" name="DateTime" placeholder="Datum och Tid" onfocus="(this.type='datetime-local')" required>
     <textarea name="Address" placeholder="Din adress" required></textarea>
-    <button type="submit" id="submit-btn">CONFIRM BOOKING</button>
+    <button type="submit">CONFIRM BOOKING</button>
   </form>
-  <div id="success-message">Tack! Vi har mottagit din bokning och kontaktar dig snart.</div>
+  <div id="success-message">Tack! Vi har mottagit din bokning.</div>
 </div>
 
 <a href="tel:+46739290743" class="call">📞 Ring</a>
@@ -84,22 +138,32 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
   const card = document.getElementById('mainCard');
   setInterval(() => { card.classList.toggle('is-flipped'); }, 2000);
 
-  const form = document.getElementById('car-form');
-  const message = document.getElementById('success-message');
+  // Function to add a local review (Temporary)
+  function addReview() {
+    const name = document.getElementById('rev-name').value;
+    const stars = document.getElementById('rev-stars').value;
+    const text = document.getElementById('rev-text').value;
 
+    if(name && text) {
+      const container = document.getElementById('reviews-container');
+      const newReview = document.createElement('div');
+      newReview.className = 'review-card';
+      newReview.innerHTML = `<span class="review-name">${name}</span><div class="stars">${stars}</div><p>"${text}"</p>`;
+      container.prepend(newReview);
+      document.getElementById('review-form').reset();
+      alert("Tack för ditt omdöme!");
+    }
+  }
+
+  // Booking Form handling
+  const form = document.getElementById('car-form');
   form.onsubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
+    const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
     if (response.ok) {
       form.style.display = 'none';
-      message.style.display = 'block';
-    } else {
-      alert("Något gick fel, försök igen.");
+      document.getElementById('success-message').style.display = 'block';
     }
   };
 </script>
