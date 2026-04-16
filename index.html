@@ -7,11 +7,9 @@
 <style>
 body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; overflow-x: hidden; }
 
-/* Navigation */
 nav { background: #007BFF; padding: 15px; position: sticky; top: 0; z-index: 1000; text-align: center; }
 nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
 
-/* Professional Logo Header */
 header {
   background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%);
   color: white;
@@ -29,7 +27,6 @@ header {
 .logo-clean { color: #ffffff; }
 .logo-drive { color: #FFD700; }
 
-/* About Section - Simple & Clear */
 .about-section {
   background: white;
   margin: 20px;
@@ -40,28 +37,49 @@ header {
 }
 .about-item { font-size: 24px; font-weight: bold; color: #333; margin: 10px 0; display: block; }
 
-/* Slider Section */
-.slider-container {
-  position: relative;
-  max-width: 500px;
+/* 3D Rotating Slider */
+.scene {
+  width: 300px;
+  height: 400px;
   margin: 20px auto;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  perspective: 1000px;
 }
-.slides { display: flex; transition: transform 0.8s ease-in-out; }
-.slide { min-width: 100%; background: white; text-align: center; }
-.slide img { width: 100%; height: auto; display: block; border-bottom: 5px solid #007BFF; }
-.slide-info { padding: 20px; }
-.slide-info h3 { margin: 0; color: #007BFF; font-size: 26px; }
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-face img { width: 100%; height: 260px; object-fit: cover; border-bottom: 5px solid #007BFF; }
+.card-info { padding: 20px; text-align: center; }
+.card-info h3 { margin: 0; color: #007BFF; font-size: 26px; }
 .price-tag { font-size: 30px; font-weight: 900; color: #333; margin-top: 10px; }
 
-/* Booking Form */
+.card-face-back {
+  transform: rotateY(180deg);
+}
+
 .booking-section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; }
 input, textarea { width: 85%; padding: 12px; margin: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
 button { padding: 15px 40px; background: #007BFF; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 85%; }
 
-/* Buttons */
 .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
@@ -89,18 +107,18 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
   <p style="color: #666; margin-top: 10px;">Vi kommer till din adress!</p>
 </div>
 
-<div class="slider-container">
-  <div class="slides" id="slider">
-    <div class="slide">
+<div class="scene">
+  <div class="card" id="mainCard">
+    <div class="card-face">
       <img src="poster.jpg.PNG" alt="Standard Bil">
-      <div class="slide-info">
+      <div class="card-info">
         <h3>Standard Bil</h3>
         <div class="price-tag">299 SEK</div>
       </div>
     </div>
-    <div class="slide">
+    <div class="card-face card-face-back">
       <img src="poster.jpg.PNG" alt="Stor Bil">
-      <div class="slide-info">
+      <div class="card-info">
         <h3>Stor Bil / SUV</h3>
         <div class="price-tag">399 SEK</div>
       </div>
@@ -128,13 +146,10 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 </footer>
 
 <script>
-  let index = 0;
-  function autoSlide() {
-    index++;
-    if (index >= 2) index = 0;
-    document.getElementById('slider').style.transform = `translateX(${-index * 100}%)`;
-  }
-  setInterval(autoSlide, 3500);
+  const card = document.getElementById('mainCard');
+  setInterval(() => {
+    card.classList.toggle('is-flipped');
+  }, 2000); // Rotating every 2 seconds
 </script>
 
 </body>
