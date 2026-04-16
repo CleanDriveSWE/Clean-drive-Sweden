@@ -3,57 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CleanDrive Sweden - Mobil Bilvård</title>
 <style>
-body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; }
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; overflow-x: hidden; }
 
+/* Navigation */
 nav { background: #007BFF; padding: 15px; position: sticky; top: 0; z-index: 1000; text-align: center; }
 nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
 
+/* Professional Logo Header */
 header {
   background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 40px 20px;
 }
-
 .logo-container {
   display: inline-block;
   padding: 10px 20px;
   border: 3px solid white;
   border-radius: 50px 5px 50px 5px;
   background: rgba(255, 255, 255, 0.1);
-  margin-bottom: 10px;
 }
-
-.logo-text {
-  font-size: 35px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-}
-
+.logo-text { font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
 .logo-clean { color: #ffffff; }
 .logo-drive { color: #FFD700; }
 
-.header-subtext {
-  font-size: 18px;
-  opacity: 0.9;
-  margin-top: 10px;
-  display: block;
+/* About Section - Simple & Clear */
+.about-section {
+  background: white;
+  margin: 20px;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+.about-item { font-size: 24px; font-weight: bold; color: #333; margin: 10px 0; display: block; }
 
-.section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+/* Slider Section */
+.slider-container {
+  position: relative;
+  max-width: 500px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+.slides { display: flex; transition: transform 0.8s ease-in-out; }
+.slide { min-width: 100%; background: white; text-align: center; }
+.slide img { width: 100%; height: auto; display: block; border-bottom: 5px solid #007BFF; }
+.slide-info { padding: 20px; }
+.slide-info h3 { margin: 0; color: #007BFF; font-size: 26px; }
+.price-tag { font-size: 30px; font-weight: 900; color: #333; margin-top: 10px; }
 
-.price-card { max-width: 500px; margin: 0 auto; border: 2px solid #007BFF; border-radius: 15px; overflow: hidden; }
-.price-item { padding: 15px; border-bottom: 1px solid #eee; }
-.price-tag { font-size: 24px; font-weight: bold; color: #333; }
-
+/* Booking Form */
+.booking-section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; }
 input, textarea { width: 85%; padding: 12px; margin: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
-button { padding: 15px 40px; background: #007BFF; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
-button:hover { background: #004494; transform: scale(1.05); }
+button { padding: 15px 40px; background: #007BFF; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 85%; }
 
+/* Buttons */
 .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
@@ -64,57 +72,70 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
 <body>
 
 <nav>
-  <a href="#">Home</a>
-  <a href="#about">About</a>
-  <a href="#prices">Prices</a>
-  <a href="#booking">Booking</a>
+  <a href="#">Hem</a>
+  <a href="#booking">Boka Nu</a>
 </nav>
 
 <header>
   <div class="logo-container">
-    <div class="logo-text">
-      <span class="logo-clean">Clean</span><span class="logo-drive">Drive</span>
-    </div>
+    <div class="logo-text"><span class="logo-clean">Clean</span><span class="logo-drive">Drive</span></div>
   </div>
-  <span class="header-subtext">✨ Mobil Bilvård i Halmstad ✨</span>
+  <p style="margin-top:10px; opacity:0.9;">Mobil Bilvård</p>
 </header>
 
-<div id="about" class="section">
-  <h2>About Us / Om oss</h2>
-  <p>Professionell invändig bilvård direkt till din adress. Vi gör din bil som ny igen!</p>
+<div class="about-section">
+  <span class="about-item">🧹 Noggrann Dammsugning</span>
+  <span class="about-item">✨ Lyxig Doft</span>
+  <p style="color: #666; margin-top: 10px;">Vi kommer till din adress!</p>
 </div>
 
-<div id="prices" class="section">
-  <h2 style="color: #007BFF;">Våra Priser</h2>
-  <div class="price-card">
-    <div class="price-item"><h3>Standard Bil</h3><div class="price-tag">299 SEK</div></div>
-    <div class="price-item" style="background-color: #f9f9f9;"><h3>Stor Bil / SUV</h3><div class="price-tag">399 SEK</div></div>
+<div class="slider-container">
+  <div class="slides" id="slider">
+    <div class="slide">
+      <img src="poster.jpg.PNG" alt="Standard Bil">
+      <div class="slide-info">
+        <h3>Standard Bil</h3>
+        <div class="price-tag">299 SEK</div>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="poster.jpg.PNG" alt="Stor Bil">
+      <div class="slide-info">
+        <h3>Stor Bil / SUV</h3>
+        <div class="price-tag">399 SEK</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="section">
-  <h2>Vårt Erbjudande</h2>
-  <img src="poster.jpg.PNG" alt="Promotion" style="width:100%; max-width:500px; border-radius:15px; border: 2px solid #007BFF;">
-</div>
-
-<div id="booking" class="section">
-  <h2>📅 Boka Nu</h2>
+<div id="booking" class="booking-section">
+  <h2 style="color: #007BFF;">📅 Boka Tid</h2>
   <form action="https://formspree.io/f/xeerykll" method="POST">
     <input type="text" name="name" placeholder="Ditt Namn" required><br>
     <input type="email" name="email" placeholder="Din E-post" required><br>
-    <input type="text" name="car" placeholder="Bilmodell (t.ex. Volvo V60)" required><br>
+    <input type="text" name="car" placeholder="Bilmodell" required><br>
     <input type="text" name="time" placeholder="Välj datum och tid" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" required><br>
-    <textarea name="address" placeholder="Din adress i Halmstad / Meddelande" required></textarea><br>
+    <textarea name="address" placeholder="Din adress" required></textarea><br>
     <button type="submit">CONFIRM BOOKING</button>
   </form>
 </div>
 
-<a href="tel:+46739290743" class="call">📞 Ring Nu</a>
+<a href="tel:+46739290743" class="call">📞 Ring</a>
 <a href="https://wa.me/46739290743" class="whatsapp" target="_blank">💬 WhatsApp</a>
 
 <footer>
-  <p>© 2026 CleanDrive Sweden | Professionell Mobil Bilvård</p>
+  <p>© 2026 CleanDrive Sweden</p>
 </footer>
+
+<script>
+  let index = 0;
+  function autoSlide() {
+    index++;
+    if (index >= 2) index = 0;
+    document.getElementById('slider').style.transform = `translateX(${-index * 100}%)`;
+  }
+  setInterval(autoSlide, 3500);
+</script>
 
 </body>
 </html>
