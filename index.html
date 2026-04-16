@@ -14,7 +14,6 @@ header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: w
 .about-section { background: white; margin: 20px; padding: 30px 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .about-item { font-size: 24px; font-weight: bold; color: #333; margin: 10px 0; display: block; }
 
-/* 3D Rotating Slider */
 .scene { width: 300px; height: 400px; margin: 20px auto; perspective: 1000px; }
 .card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; }
 .card.is-flipped { transform: rotateY(180deg); }
@@ -66,6 +65,7 @@ footer { background: #333; color: white; text-align: center; padding: 20px; marg
   <h2 style="color: #007BFF;">📅 Boka Tid</h2>
   <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
     <input type="text" name="Name" placeholder="Ditt Namn" required>
+    <input type="email" name="Email" placeholder="Din E-post" required>
     <input type="tel" name="Phone" placeholder="Mobilnummer" required>
     <input type="text" name="CarModel" placeholder="Bilmodell" required>
     <input type="text" name="DateTime" placeholder="Datum och Tid" onfocus="(this.type='datetime-local')" required>
