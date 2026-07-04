@@ -33,7 +33,7 @@
     button:hover { background: #218838; transform: scale(1.02); }
 
     .contact-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
-    .btn-fixed { display: block; margin-bottom: 10px; padding: 12px 20px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center; }
+    .btn-fixed { display: block; padding: 15px 30px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center; background:#007BFF; }
     
     footer { background: #333; color: white; text-align: center; padding: 20px; }
 </style>
@@ -62,12 +62,12 @@
     <div class="card" id="mainCard">
         <div class="card-face">
             <h3>Standard Bil</h3>
-            <div class="price-tag">179 SEK</div>
+            <div class="price-tag">299 SEK</div>
             <p>Tryck för att se nästa pris</p>
         </div>
         <div class="card-face card-face-back">
             <h3>Stor Bil / SUV</h3>
-            <div class="price-tag">239SEK</div>
+            <div class="price-tag">399 SEK</div>
             <p>Tryck för att se nästa pris</p>
         </div>
     </div>
@@ -79,6 +79,9 @@
         <input type="text" name="Name" placeholder="Namn" required style="width: 90%; padding: 10px; margin: 5px;">
         <input type="email" name="Email" placeholder="E-post" required style="width: 90%; padding: 10px; margin: 5px;">
         <input type="tel" name="Phone" placeholder="Telefon" required style="width: 90%; padding: 10px; margin: 5px;">
+        
+        <input type="datetime-local" name="DateAndTime" required style="width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 8px;">
+        
         <textarea name="Address" placeholder="Adress i Halmstad" required style="width: 90%; padding: 10px; margin: 5px;"></textarea>
         <button type="submit">SKICKA BOKNING</button>
     </form>
@@ -88,14 +91,12 @@
 </div>
 
 <div class="contact-btn">
-    <a href="tel:+46739290743" style="background:#007BFF;" class="btn-fixed">📞 Ring</a>
-    <a href="https://wa.me/46739290743" style="background:#25D366;" class="btn-fixed">💬 WhatsApp</a>
+    <a href="tel:+46739290743" class="btn-fixed">📞 Ring oss</a>
 </div>
 
 <footer><p>© 2026 CleanDrive Sweden - Halmstad</p></footer>
 
 <script>
-    // د فرم د بریالي لیږلو لپاره
     const form = document.getElementById('car-form');
     form.onsubmit = async (e) => {
         e.preventDefault();
