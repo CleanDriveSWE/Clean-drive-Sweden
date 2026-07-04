@@ -13,29 +13,58 @@
     
     /* نیویګیشن بار */
     nav { background: #007BFF; padding: 15px; position: sticky; top: 0; z-index: 1000; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 18px; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-block; vertical-align: middle; }
+    .nav-call { border: 2px solid white; padding: 5px 15px; border-radius: 25px; font-size: 16px; transition: 0.3s; }
+    .nav-call:hover { background: white; color: #007BFF; }
 
     header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: white; text-align: center; padding: 60px 20px; }
     .logo-text { font-size: 40px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
 
     .section { background: white; margin: 20px auto; padding: 30px; border-radius: 15px; max-width: 800px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
     
-    /* د قیمتونو کارډ */
-    .scene { width: 100%; max-width: 320px; height: 350px; margin: 30px auto; perspective: 1000px; }
+    /* د قیمتونو کارډ او د حرکت انیمیشن */
+    .scene { width: 100%; max-width: 320px; height: 350px; margin: 30px auto; perspective: 1000px; animation: pulse 3s infinite; }
     .card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
     .card.is-flipped { transform: rotateY(180deg); }
     .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .card-face-back { transform: rotateY(180deg); }
-    .price-tag { font-size: 32px; font-weight: 900; color: #007BFF; margin-top: 10px; }
+    .price-tag { font-size: 36px; font-weight: 900; color: #007BFF; margin-top: 10px; }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+    }
+
+    /* د فارم نوی او پرمختللی ډیزاین */
+    #car-form input, #car-form textarea {
+        display: block;
+        margin: 15px auto !important;
+        width: 95% !important;
+        max-width: 600px;
+        border: 2px solid #ddd !important;
+        padding: 14px !important;
+        border-radius: 10px !important;
+        font-size: 16px;
+        box-sizing: border-box;
+        font-family: inherit;
+        transition: 0.3s;
+    }
+    #car-form input:focus, #car-form textarea:focus {
+        border-color: #007BFF !important;
+        outline: none;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(0,123,255,0.2);
+    }
 
     /* د بکینګ تڼۍ */
-    button { padding: 15px 30px; background: #28a745; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 100%; transition: 0.3s; }
+    button { display: block; margin: 20px auto 0; padding: 15px 30px; background: #28a745; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 95%; max-width: 600px; transition: 0.3s; }
     button:hover { background: #218838; transform: scale(1.02); }
 
     .contact-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
-    .btn-fixed { display: block; padding: 15px 30px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center; background:#007BFF; }
+    .btn-fixed { display: block; padding: 15px 30px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center; background:#007BFF; font-size: 16px; }
     
-    footer { background: #333; color: white; text-align: center; padding: 20px; }
+    footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
 </style>
 </head>
 <body>
@@ -43,6 +72,7 @@
 <nav>
     <a href="#">Hem</a>
     <a href="#booking">Boka Nu</a>
+    <a href="tel:+46739290743" class="nav-call">📞 Ring oss</a>
 </nav>
 
 <header>
@@ -63,26 +93,37 @@
         <div class="card-face">
             <h3>Standard Bil</h3>
             <div class="price-tag">179 SEK</div>
-            <p>Tryck för att se nästa pris</p>
+            <p style="color: #666; font-size: 14px; margin-top: 15px;">Klicka för att se nästa pris ↻</p>
         </div>
         <div class="card-face card-face-back">
             <h3>Stor Bil / SUV</h3>
             <div class="price-tag">249 SEK</div>
-            <p>Tryck för att se nästa pris</p>
+            <p style="color: #666; font-size: 14px; margin-top: 15px;">Klicka för att se nästa pris ↻</p>
         </div>
+    </div>
+</div>
+
+<!-- د پیرودونکو د نظرونو برخه -->
+<div class="section" style="text-align: center;">
+    <h3 style="color: #007BFF; margin-top: 0; font-size: 24px;">Vad våra kunder säger</h3>
+    <div style="margin-bottom: 20px; padding: 15px; border-bottom: 1px solid #eee; text-align: left;">
+        <p style="margin: 5px 0; font-style: italic; color: #444; font-size: 16px;">"Supernöjd! Bilen blev som ny invändigt och doftar fantastiskt."</p>
+        <strong style="color: #666; font-size: 14px;">- Anna, Halmstad ⭐⭐⭐⭐⭐</strong>
+    </div>
+    <div style="padding: 15px; text-align: left;">
+        <p style="margin: 5px 0; font-style: italic; color: #444; font-size: 16px;">"Väldigt smidigt att de kom direkt till mitt hem. Rekommenderas varmt!"</p>
+        <strong style="color: #666; font-size: 14px;">- Johan, Halmstad ⭐⭐⭐⭐⭐</strong>
     </div>
 </div>
 
 <div id="booking" class="section">
     <h2 style="color: #007BFF; text-align: center;">Boka din tid</h2>
     <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
-        <input type="text" name="Name" placeholder="Namn" required style="width: 90%; padding: 10px; margin: 5px;">
-        <input type="email" name="Email" placeholder="E-post" required style="width: 90%; padding: 10px; margin: 5px;">
-        <input type="tel" name="Phone" placeholder="Telefon" required style="width: 90%; padding: 10px; margin: 5px;">
-        
-        <input type="datetime-local" name="DateAndTime" required style="width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 8px;">
-        
-        <textarea name="Address" placeholder="Adress i Halmstad" required style="width: 90%; padding: 10px; margin: 5px;"></textarea>
+        <input type="text" name="Name" placeholder="Namn" required>
+        <input type="email" name="Email" placeholder="E-post" required>
+        <input type="tel" name="Phone" placeholder="Telefon" required>
+        <input type="datetime-local" name="DateAndTime" required>
+        <textarea name="Address" placeholder="Adress i Halmstad" required rows="3"></textarea>
         <button type="submit">SKICKA BOKNING</button>
     </form>
     <div id="success-message" style="display:none; text-align:center; color:green; margin-top:20px;">
