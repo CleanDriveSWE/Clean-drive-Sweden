@@ -3,168 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CleanDrive Sweden - Mobil Bilvård</title>
+<meta name="description" content="CleanDrive Sweden - Professionell mobil bilvård i Halmstad. Vi kommer till dig!">
+<title>CleanDrive Sweden - Mobil Bilvård i Halmstad</title>
 <style>
-body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; overflow-x: hidden; }
-nav { background: #007BFF; padding: 15px; position: sticky; top: 0; z-index: 1000; text-align: center; }
-nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
-header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: white; text-align: center; padding: 40px 20px; }
-.logo-container { display: inline-block; padding: 10px 20px; border: 3px solid white; border-radius: 50px 5px 50px 5px; background: rgba(255, 255, 255, 0.1); }
-.logo-text { font-size: 32px; font-weight: 900; text-transform: uppercase; }
+    /* د سکرول نرم حرکت */
+    html { scroll-behavior: smooth; }
+    
+    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; }
+    
+    /* نیویګیشن بار */
+    nav { background: #007BFF; padding: 15px; position: sticky; top: 0; z-index: 1000; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 18px; }
 
-.about-section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-.about-item { font-size: 24px; font-weight: bold; color: #333; margin: 10px 0; display: block; }
+    header { background: linear-gradient(135deg, #0056b3 0%, #007BFF 100%); color: white; text-align: center; padding: 60px 20px; }
+    .logo-text { font-size: 40px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
 
-.om-oss { background: #ffffff; margin: 20px; padding: 25px; border-radius: 15px; border-left: 5px solid #FFD700; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; }
-.om-oss h2 { color: #007BFF; margin-top: 0; text-align: center; }
-.om-oss p { color: #444; line-height: 1.6; font-size: 16px; }
+    .section { background: white; margin: 20px auto; padding: 30px; border-radius: 15px; max-width: 800px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    
+    /* د قیمتونو کارډ */
+    .scene { width: 100%; max-width: 320px; height: 350px; margin: 30px auto; perspective: 1000px; }
+    .card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+    .card.is-flipped { transform: rotateY(180deg); }
+    .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .card-face-back { transform: rotateY(180deg); }
+    .price-tag { font-size: 32px; font-weight: 900; color: #007BFF; margin-top: 10px; }
 
-/* Reviews Display Section */
-.reviews-section { background: #fff; margin: 20px; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
-.review-card { background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border-bottom: 2px solid #007BFF; }
-.review-name { font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
-.stars { color: #FFD700; font-size: 18px; }
+    /* د بکینګ تڼۍ */
+    button { padding: 15px 30px; background: #28a745; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 100%; transition: 0.3s; }
+    button:hover { background: #218838; transform: scale(1.02); }
 
-.review-form input, .review-form textarea, .review-form select { width: 90%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; }
-.review-btn { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-
-.scene { width: 300px; height: 400px; margin: 20px auto; perspective: 1000px; }
-.card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; }
-.card.is-flipped { transform: rotateY(180deg); }
-.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; background: white; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center; }
-.card-face img { width: 100%; height: 260px; object-fit: cover; border-bottom: 5px solid #007BFF; }
-.card-info { padding: 20px; text-align: center; }
-.card-info h3 { margin: 0; color: #007BFF; font-size: 26px; }
-.price-tag { font-size: 30px; font-weight: 900; color: #333; margin-top: 10px; }
-.card-face-back { transform: rotateY(180deg); }
-
-.booking-section { background: white; margin: 20px; padding: 25px; border-radius: 15px; text-align: center; }
-input, textarea { width: 85%; padding: 12px; margin: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
-button { padding: 15px 40px; background: #007BFF; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; width: 85%; }
-
-#success-message { display: none; color: #28a745; font-weight: bold; margin-top: 20px; font-size: 18px; }
-
-.whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-.call { position: fixed; bottom: 80px; right: 20px; background: #007BFF; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+    .contact-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+    .btn-fixed { display: block; margin-bottom: 10px; padding: 12px 20px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: center; }
+    
+    footer { background: #333; color: white; text-align: center; padding: 20px; }
 </style>
 </head>
 <body>
 
-<nav><a href="#">Hem</a><a href="#booking">Boka Nu</a></nav>
+<nav>
+    <a href="#">Hem</a>
+    <a href="#booking">Boka Nu</a>
+</nav>
 
 <header>
-  <div class="logo-container"><div class="logo-text">CleanDrive</div></div>
-  <p style="margin-top:10px; opacity:0.9;">Mobil Bilvård i Halmstad</p>
+    <div class="logo-text">CleanDrive</div>
+    <p>Mobil Bilvård i Halmstad - Vi gör din bil som ny!</p>
 </header>
 
-<div class="about-section">
-  <span class="about-item">🧹 Noggrann Dammsugning</span>
-  <span class="about-item">✨ Lyxig Doft</span>
-  <p>Vi kommer hem till dig i Halmstad med omnejd!</p>
+<div class="section">
+    <h2>Varför välja oss?</h2>
+    <p>✓ Vi kommer till din dörr i Halmstad.</p>
+    <p>✓ Professionell invändig rengöring.</p>
+    <p>✓ Snabb och smidig bokning.</p>
 </div>
 
-<div class="om-oss">
-  <h2>Om Oss</h2>
-  <p>
-    <strong>Välkommen till CleanDrive Sweden!</strong><br><br>
-    Vi är specialister på mobil bilvård som kommer direkt till din adress. 
-    <strong>Vi utgår från Halmstad och utför arbete i hela staden med omnejd.</strong><br><br>
-    För att garantera bästa resultat fokuserar vi helt på bilens interiör (invändig rengöring). 
-    Smidigt, enkelt och på din plats!
-  </p>
-</div>
-
-<div class="reviews-section">
-  <h2 style="color: #007BFF;">Vad våra kunder säger</h2>
-  <div id="reviews-container">
-    <div class="review-card">
-      <span class="review-name">Erik Johansson</span>
-      <div class="stars">★★★★★</div>
-      <p>"Fantastiskt jobb! Bilen doftar som ny och allt var skinande rent."</p>
+<!-- د قیمتونو کارډ -->
+<div class="scene" onclick="document.getElementById('mainCard').classList.toggle('is-flipped')">
+    <div class="card" id="mainCard">
+        <div class="card-face">
+            <h3>Standard Bil</h3>
+            <div class="price-tag">299 SEK</div>
+            <p>Tryck för att se nästa pris</p>
+        </div>
+        <div class="card-face card-face-back">
+            <h3>Stor Bil / SUV</h3>
+            <div class="price-tag">399 SEK</div>
+            <p>Tryck för att se nästa pris</p>
+        </div>
     </div>
-    <div class="review-card">
-      <span class="review-name">Sara Lindberg</span>
-      <div class="stars">★★★★★</div>
-      <p>"Smidigt att de kom till mitt jobb i Halmstad. Rekommenderas varmt!"</p>
-    </div>
-  </div>
-
-  <hr style="margin: 20px 0; border: 0.5px solid #eee;">
-  <h3>Lämna ett omdöme</h3>
-  <form id="review-form" class="review-form">
-    <input type="text" id="rev-name" placeholder="Ditt Namn" required>
-    <select id="rev-stars">
-      <option value="★★★★★">5 Stjärnor</option>
-      <option value="★★★★">4 Stjärnor</option>
-      <option value="★★★">3 Stjärnor</option>
-    </select>
-    <textarea id="rev-text" placeholder="Ditt omdöme..." required></textarea>
-    <button type="button" class="review-btn" onclick="addReview()">Skicka</button>
-  </form>
 </div>
 
-<div class="scene">
-  <div class="card" id="mainCard">
-    <div class="card-face"><img src="poster.jpg.PNG">
-      <div class="card-info"><h3>Standard Bil</h3><div class="price-tag">299 SEK</div></div>
+<div id="booking" class="section">
+    <h2 style="color: #007BFF; text-align: center;">Boka din tid</h2>
+    <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
+        <input type="text" name="Name" placeholder="Namn" required style="width: 90%; padding: 10px; margin: 5px;">
+        <input type="email" name="Email" placeholder="E-post" required style="width: 90%; padding: 10px; margin: 5px;">
+        <input type="tel" name="Phone" placeholder="Telefon" required style="width: 90%; padding: 10px; margin: 5px;">
+        <textarea name="Address" placeholder="Adress i Halmstad" required style="width: 90%; padding: 10px; margin: 5px;"></textarea>
+        <button type="submit">SKICKA BOKNING</button>
+    </form>
+    <div id="success-message" style="display:none; text-align:center; color:green; margin-top:20px;">
+        <h3>Tack! Vi har mottagit din bokning.</h3>
     </div>
-    <div class="card-face card-face-back"><img src="poster.jpg.PNG">
-      <div class="card-info"><h3>Stor Bil / SUV</h3><div class="price-tag">399 SEK</div></div>
-    </div>
-  </div>
 </div>
 
-<div id="booking" class="booking-section">
-  <h2 style="color: #007BFF;">📅 Boka Tid</h2>
-  <p style="color: #d9534f; font-weight: bold;">Verksam i Halmstad med omnejd</p>
-  <p style="color: #666; font-size: 14px;">(Endast invändig rengöring)</p>
-  <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
-    <input type="text" name="Name" placeholder="Ditt Namn" required>
-    <input type="email" name="Email" placeholder="Din E-post" required>
-    <input type="tel" name="Phone" placeholder="Mobilnummer" required>
-    <input type="text" name="CarModel" placeholder="Bilmodell" required>
-    <input type="text" name="DateTime" placeholder="Datum och Tid" onfocus="(this.type='datetime-local')" required>
-    <textarea name="Address" placeholder="Din adress i Halmstad" required></textarea>
-    <button type="submit">CONFIRM BOOKING</button>
-  </form>
-  <div id="success-message">Tack! Vi har mottagit din bokning.</div>
+<div class="contact-btn">
+    <a href="tel:+46739290743" style="background:#007BFF;" class="btn-fixed">📞 Ring</a>
+    <a href="https://wa.me/46739290743" style="background:#25D366;" class="btn-fixed">💬 WhatsApp</a>
 </div>
-
-<a href="tel:+46739290743" class="call">📞 Ring</a>
-<a href="https://wa.me/46739290743" class="whatsapp" target="_blank">💬 WhatsApp</a>
 
 <footer><p>© 2026 CleanDrive Sweden - Halmstad</p></footer>
 
 <script>
-  const card = document.getElementById('mainCard');
-  setInterval(() => { card.classList.toggle('is-flipped'); }, 2000);
-
-  function addReview() {
-    const name = document.getElementById('rev-name').value;
-    const stars = document.getElementById('rev-stars').value;
-    const text = document.getElementById('rev-text').value;
-    if(name && text) {
-      const container = document.getElementById('reviews-container');
-      const newReview = document.createElement('div');
-      newReview.className = 'review-card';
-      newReview.innerHTML = `<span class="review-name">${name}</span><div class="stars">${stars}</div><p>"${text}"</p>`;
-      container.prepend(newReview);
-      document.getElementById('review-form').reset();
-      alert("Tack för ditt omdöme!");
-    }
-  }
-
-  const form = document.getElementById('car-form');
-  form.onsubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-    if (response.ok) {
-      form.style.display = 'none';
-      document.getElementById('success-message').style.display = 'block';
-    }
-  };
+    // د فرم د بریالي لیږلو لپاره
+    const form = document.getElementById('car-form');
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+        if (response.ok) {
+            form.style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+        }
+    };
 </script>
 </body>
 </html>
