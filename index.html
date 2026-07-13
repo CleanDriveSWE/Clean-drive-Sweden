@@ -130,17 +130,22 @@
     <h2 style="color: #007BFF; text-align: center;">Boka din tid</h2>
     <form id="car-form" action="https://formspree.io/f/xeerykll" method="POST">
         <input type="text" name="Name" placeholder="Namn" required>
+        
         <input type="text" name="LicensePlate" placeholder="Registreringsnummer (t.ex. ABC 123)" required>
-
+        
         <input type="tel" name="Phone" placeholder="Telefon" required>
-        <input type="datetime-local" name="DateAndTime" required>
+        
+        <input type="datetime-local" name="DateAndTime" required style="width: 95%; padding: 14px; margin: 15px auto; display: block; border: 2px solid #ddd; border-radius: 10px;">
+        
         <textarea name="Address" placeholder="Adress i Halmstad" required rows="3"></textarea>
+        
         <button type="submit">SKICKA BOKNING</button>
     </form>
     <div id="success-message" style="display:none; text-align:center; color:green; margin-top:20px;">
         <h3>Tack! Vi har mottagit din bokning.</h3>
     </div>
 </div>
+
 
 <div class="contact-btn">
     <a href="tel:+46739290743" class="btn-fixed">📞 Ring oss</a>
