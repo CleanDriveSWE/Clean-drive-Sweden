@@ -24,7 +24,7 @@
     
     /* د قیمتونو کارډ او د حرکت انیمیشن */
     .scene { width: 100%; max-width: 320px; height: 350px; margin: 30px auto; perspective: 1000px; animation: pulse 3s infinite; }
-    .card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+    .card { width: 100%; height: 100%; position: relative; transition: transform 0.3s; transform-style: preserve-3d; cursor: pointer; }
     .card.is-flipped { transform: rotateY(180deg); }
     .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .card-face-back { transform: rotateY(180deg); }
